@@ -1,5 +1,17 @@
 #!/bin/bash
+#Ensuring proper groups are assigned
 groups
+#Setting up Elastic Block Storage
+lsblk
+sudo file -s /dev/xvdf
+sudo mkfs -t ext4 /dev/xvdf
+sudo mkdir /var/www/html/myApps
+sudo mount /dev/xvdf /var/www/html/myApps
+sudo cp /etc/fstab /etc/fstab.orig
+df
+sudo file -s /dev/xvdf
+sudo mount -a
+#Setting permissions for apache server directories
 sudo chown -R ec2-user:apache /var/www
 sudo chmod 2775 /var/www
 find /var/www -type d -exec sudo chmod 2775 {} \;
