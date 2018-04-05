@@ -24,5 +24,11 @@ Type Y to remove the test database.
 
 Type Y to reload the privilege tables and save your changes.
 
+#Access database command
+mysql -u root -p
+CREATE DATABASE database_name;
+USE database_name;
+create table myTestApp (myID int, myVar varchar(100));
+
 #URL will be
 IP address /myApps/myTestApp/
