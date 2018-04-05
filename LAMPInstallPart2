@@ -8,6 +8,9 @@ sudo mkfs -t ext4 /dev/xvdf
 sudo mkdir /var/www/html/myApps
 sudo mount /dev/xvdf /var/www/html/myApps
 sudo cp /etc/fstab /etc/fstab.orig
+echo "Please enter UUID.  Default is 542709a5-82dd-45b1-a521-8dac15a274a9"
+read UUID
+sudo echo "UUID=".$UUID."       /var/www/html/myApps   ext4    defaults,nofail        0       2" >> fstab
 df
 sudo file -s /dev/xvdf
 sudo mount -a
@@ -17,3 +20,8 @@ sudo chmod 2775 /var/www
 find /var/www -type d -exec sudo chmod 2775 {} \;
 find /var/www -type f -exec sudo chmod 0664 {} \;
 sudo yum list installed httpd24 php70 mysql56-server php70-mysqlnd
+#Set myApps path
+myApps=/var/www/html/myApps
+cd $myApps
+#Download myTestApp
+git clone https://github.com/joboyd4/myTestApp.git
