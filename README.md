@@ -26,9 +26,18 @@ Type Y to reload the privilege tables and save your changes.
 
 #Access database command
 mysql -u root -p
-CREATE DATABASE database_name;
-USE database_name;
-create table myTestApp (myID int, myVar varchar(100));
+CREATE DATABASE MY_TEST_DATABASE;
+USE MY_TEST_DATABASE;
+CREATE TABLE MY_TEST_APP_TABLE (
+  MY_ID int NOT NULL PRIMARY KEY UNIQUE KEY AUTO_INCREMENT,
+  MY_VARIABLE varchar(100)
+  );
+CREATE TABLE MY_USERS (
+  USER_ID int NOT NULL PRIMARY KEY UNIQUE KEY AUTO_INCREMENT,
+  USER_NAME VARCHAR(100) UNIQUE KEY NOT NULL,
+  PASSWORD VARCHAR(100) NOT NULL);
+INSERT INTO MY_USERS (USER_NAME,PASSWORD) VALUES('user1','user1pass');  
+SELECT * FROM MY_USERS WHERE USER_NAME='user1' AND PASSWORD='user1pass';
 
 #URL will be
 IP address /myApps/myTestApp/
